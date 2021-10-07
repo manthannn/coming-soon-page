@@ -15,22 +15,22 @@
             <h1> We're <span>Launching</span> Soon !!</h1>
             <div class="launch-time">
                 <div>
-                    <p>00</p>
+                    <p id="days">00</p>
                     <span>Days</span>
                 </div>
 
                 <div>
-                    <p>00</p>
+                    <p id="hours">00</p>
                     <span>Hours</span>
                 </div>
 
                 <div>
-                    <p>00</p>
+                    <p id="min">00</p>
                     <span>Minutes</span>
                 </div>
 
                 <div>
-                    <p>00</p>
+                    <p id="sec">00</p>
                     <span>Seconds</span>
                 </div>
 
@@ -41,7 +41,7 @@
     </div>
 
     <script>
-        var countdown = new Date("Oct 16 ,2021 00:00:00:00").getTime();
+        var countdown = new Date("Oct 19 ,2021 00:00:00:00").getTime(); //launch date
         var x = setInterval(function(){
             var now = new Date().getTime();
             var distance = countdown - now;
@@ -52,6 +52,22 @@
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
             //to display this on our web page
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("min").innerHTML = minutes;
+            document.getElementById("sec").innerHTML = seconds;
+
+            //if countdown ended this will show 00
+            if (distance<0){
+                clearInterval(x);
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("min").innerHTML = "00";
+                document.getElementById("sec").innerHTML = "00";
+                 
+
+            }
+            
             
 
         },1000);
